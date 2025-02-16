@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Fahrschueler } from '../interfaces/fahrschueler.interface';
-import { FahrschuelerService } from '../services/fahrschueler.service';
+import { Fahrschueler } from '../../interfaces/fahrschueler.interface';
+import { FahrschuelerService } from '../../services/fahrschueler.service';
 
 @Component({
   selector: 'app-fahrschueler-add',

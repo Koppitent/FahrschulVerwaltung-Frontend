@@ -1,0 +1,101 @@
+<div class="fs-list">
+<div class="fs-head">
+	<h1>Fahrlehrer List</h1>
+	<div class="search-container">
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Suche nach Namen..."
+    [(ngModel)]="searchTerm"
+    (input)="filterFahrlehrer()"
+  />
+</div>
+	<!-- Dropdown Menu ---->
+	<div class="dropdown">
+  <button (click)="toggleDropdown()" class="dropdown-button">
+    Filter Options {{fDD}}
+  </button>
+@if (dropdownOpen) {
+  <div @dropdownAnimation class="dropdown-menu">
+			<button type="button" class="reset-btn" (click)="resetFilters()">Reset</button>
+			<hr class="dpd-seperator">
+			<label>
+        <input type="checkbox" [(ngModel)]="idVisible" (change)="changeIdVisible($event)" />
+        ID anzeigen
+      </label>
+			<label>
+        <input type="checkbox" [(ngModel)]="emailVisible" (change)="changeEmailVisible($event)" />
+        Email anzeigen
+      </label>
+			<label>
+        <input type="checkbox" [(ngModel)]="phoneVisible" (change)="changePhoneVisible($event)" />
+        Phone anzeigen
+      </label>
+      <label>
+        <input type="checkbox" [(ngModel)]="ortVisible" (change)="changeOrtVisible($event)" />
+        Ort anzeigen
+      </label>
+      <label>
+        <input type="checkbox" [(ngModel)]="geburtVisible" (change)="changeGeburtVisible($event)" />
+        Geburtstag anzeigen
+      </label>
+  </div>
+}
+</div>
+
+</div>
+
+	<table class="tb">
+		<tr class="tb-head">
+			@if (idVisible) {
+				<th>ID</th>
+			}
+			<th>Name</th>
+			@if (emailVisible) {
+				<th>Email</th>
+			}
+			@if (phoneVisible) {
+				<th>Phone</th>
+			}
+			<th>Klassen</th>
+			@if (ortVisible) {
+				<th>Wohnort</th>
+			}
+			@if (geburtVisible) {
+				<th>Geburtsdatum</th> 
+			}
+			<th>Aktion</th>
+		</tr>
+		@for (Fahrlehrer of filteredFahrlehrerList; track Fahrlehrer.id) {
+			<tr class="ls-content">
+				@if (idVisible) {
+					<td>{{ Fahrlehrer.id }}</td>
+				}
+				<td>{{ Fahrlehrer.vorname + ' ' + Fahrlehrer.name }}</td>
+				@if (emailVisible) {
+					<td>{{ Fahrlehrer.email }}</td>
+				}
+				@if (phoneVisible) {
+					<td>{{ Fahrlehrer.phone }}</td>
+				}
+				<td>{{ Fahrlehrer.klassen }}</td>
+				@if (ortVisible) {
+					<td>{{ Fahrlehrer.ort + ", " + Fahrlehrer.strasse }}</td>
+				}
+				@if (geburtVisible) {
+					<td>{{ Fahrlehrer.geburtsdatum }}</td>
+				}
+				<div class="btns-ls">
+				<td>
+					<button class="btn-aktionen btn-edit" (click)="editFahrlehrer(Fahrlehrer)">Bearbeiten</button>
+					<button class="btn-aktionen" (click)="deleteFahrlehrer(Fahrlehrer.id!)">Delete</button>
+				</td>
+				</div>
+			</tr>
+		}
+	</table>
+</div>
+@if(currentFahrlehrer) {
+	<app-fahrlehrer-edit [fahrlehrer]="currentFahrlehrer" (close)="closeEditFahrlehrer()" (save)="saveEditedFahrlehrer($event)" />
+}
+<button (click)="addDummy()">Add Dummy</button>

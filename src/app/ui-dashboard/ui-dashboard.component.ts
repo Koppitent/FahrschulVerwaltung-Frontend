@@ -47,8 +47,8 @@ export class UiDashboardComponent {
   private options: Map<string, boolean>;
   constructor() {
     this.options = new Map();
-    this.options.set('fahrschule', false);
-    this.options.set('option2', false);
+    this.options.set('fahrschuler', false);
+    this.options.set('fahrlehrer', false);
   }
 
   setOptionActive(option: string): void {
@@ -75,10 +75,10 @@ export class UiDashboardComponent {
   }
 
   toggleExpandFahrschueler() {
-    this.setOptionActive('fahrschule');
+    this.setOptionActive('fahrschuler');
   }
 
-  toggleExpandOption2() {
-    this.setOptionActive('option2');
+  toggleExpandFahrlehrer() {
+    this.setOptionActive('fahrlehrer');
   }
 }

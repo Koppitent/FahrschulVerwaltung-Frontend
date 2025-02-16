@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { FahrschuelerService } from '../services/fahrschueler.service';
-import { Fahrschueler } from '../interfaces/fahrschueler.interface';
+import { Component } from '@angular/core';
+import { FahrlehrerService } from '../../services/fahrlehrer.service';
+import { Fahrlehrer } from '../../interfaces/fahrlehrer.interface';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { FormsModule } from '@angular/forms';
-import { trigger, style, transition, animate, state } from '@angular/animations';
-import { FahrschuelerEditComponent } from "../fahrschueler-edit/fahrschueler-edit.component";
+import { FahrlehrerEditComponent } from '../fahrlehrer-edit/fahrlehrer-edit.component';
 
 @Component({
-  selector: 'app-fahrschueler-overview',
+  selector: 'app-fahrlehrer-overview',
   standalone: true,
-  imports: [FormsModule, FahrschuelerEditComponent],
-  templateUrl: './fahrschueler-overview.component.html',
-  styleUrl: './fahrschueler-overview.component.css',
+  imports: [FormsModule, FahrlehrerEditComponent],
+  templateUrl: './fahrlehrer-overview.component.html',
+  styleUrl: './fahrlehrer-overview.component.css',
   animations: [
     trigger('dropdownAnimation', [
       state(
@@ -35,28 +35,28 @@ import { FahrschuelerEditComponent } from "../fahrschueler-edit/fahrschueler-edi
     ]),
   ],
 })
-export class FahrschuelerOverviewComponent implements OnInit {
-  fahrschuelerList: Fahrschueler[] = [];
-  filteredFahrschuelerList: Fahrschueler[] = [];
+export class FahrlehrerOverviewComponent {
+  FahrlehrerList: Fahrlehrer[] = [];
+  filteredFahrlehrerList: Fahrlehrer[] = [];
   searchTerm: string = '';
 
-  constructor(private fahrschuelerService: FahrschuelerService) {}
+  constructor(private fahrlehrerService: FahrlehrerService) {}
 
   geburtVisible = false;
   ortVisible = false;
   emailVisible = true;
   phoneVisible = true;
   idVisible = false;
-  currentFahrschueler: Fahrschueler | null = null;
+  currentFahrlehrer: Fahrlehrer | null = null;
 
-  editFahrschueler(fs: Fahrschueler){
-		this.currentFahrschueler = fs;
-	}
+  editFahrlehrer(fs: Fahrlehrer) {
+    this.currentFahrlehrer = fs;
+  }
 
-	saveEditedFahrschueler(fs: Fahrschueler) {
-		this.fahrschuelerService.updateFahrschueler(fs).subscribe({
-      next: (updatedFahrschueler) => {
-        console.log('Update successful:', updatedFahrschueler);
+  saveEditedFahrlehrer(fs: Fahrlehrer) {
+    this.fahrlehrerService.updateFahrlehrer(fs).subscribe({
+      next: (updatedFahrlehrer) => {
+        console.log('Update successful:', updatedFahrlehrer);
       },
       error: (error) => {
         console.error('Update failed:', error);
@@ -65,12 +65,12 @@ export class FahrschuelerOverviewComponent implements OnInit {
         console.log('Update request completed.');
       },
     });
-		this.closeEditFahrschueler();
-	}
+    this.closeEditFahrlehrer();
+  }
 
-	closeEditFahrschueler() {
-		this.currentFahrschueler = null;
-	}
+  closeEditFahrlehrer() {
+    this.currentFahrlehrer = null;
+  }
 
   changeGeburtVisible(event: Event) {
     const check = (event.target as HTMLInputElement).checked;
@@ -112,8 +112,8 @@ export class FahrschuelerOverviewComponent implements OnInit {
     }
   }
 
-  filterFahrschueler() {
-    this.filteredFahrschuelerList = this.fahrschuelerList.filter((schueler) =>
+  filterFahrlehrer() {
+    this.filteredFahrlehrerList = this.FahrlehrerList.filter((schueler) =>
       (schueler.vorname + ' ' + schueler.name)
         .toLowerCase()
         .includes(this.searchTerm.toLowerCase())
@@ -121,22 +121,22 @@ export class FahrschuelerOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadFahrschueler();
+    this.loadFahrlehrer();
   }
 
   changeVisibilityGeburt(check: boolean) {}
 
   changeVisibilityOrt(check: boolean) {}
 
-  loadFahrschueler(): void {
-    this.fahrschuelerService.getFahrschueler().subscribe((data) => {
-      this.fahrschuelerList = data;
-      this.filterFahrschueler();
+  loadFahrlehrer(): void {
+    this.fahrlehrerService.getFahrlehrer().subscribe((data) => {
+      this.FahrlehrerList = data;
+      this.filterFahrlehrer();
     });
   }
 
   addDummy() {
-    const dummyFahrschueler: Fahrschueler = {
+    const dummyFahrlehrer: Fahrlehrer = {
       name: 'Mustermann',
       vorname: 'Max',
       email: 'max@example.com',
@@ -147,11 +147,11 @@ export class FahrschuelerOverviewComponent implements OnInit {
       strasse: 'Hofstr. 14',
     };
 
-    this.fahrschuelerService.createFahrschueler(dummyFahrschueler).subscribe(
-      (newFahrschueler) => {
-        console.log('Created:', newFahrschueler);
-        this.fahrschuelerList.push(newFahrschueler);
-				this.filterFahrschueler();
+    this.fahrlehrerService.createFahrlehrer(dummyFahrlehrer).subscribe(
+      (newFahrlehrer) => {
+        console.log('Created:', newFahrlehrer);
+        this.FahrlehrerList.push(newFahrlehrer);
+        this.filterFahrlehrer();
       },
       (error) => {
         console.error('Error:', error);
@@ -159,17 +159,15 @@ export class FahrschuelerOverviewComponent implements OnInit {
     );
   }
 
-  deleteFahrschueler(id: number) {
-    this.fahrschuelerService.deleteFahrschueler(id).subscribe(
+  deleteFahrlehrer(id: number) {
+    this.fahrlehrerService.deleteFahrlehrer(id).subscribe(
       () => {
-        console.log('Deleted Fahrschüler:', id);
-        this.fahrschuelerList = this.fahrschuelerList.filter(
-          (f) => f.id !== id
-        );
-				this.filterFahrschueler();
+        console.log('Deleted Fahrlehrer:', id);
+        this.FahrlehrerList = this.FahrlehrerList.filter((f) => f.id !== id);
+        this.filterFahrlehrer();
       },
       (error) => {
-        console.error('Error deleting Fahrschüler:', error);
+        console.error('Error deleting Fahrlehrer:', error);
       }
     );
   }

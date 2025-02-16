@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FahrschuelerOverviewComponent } from "./fahrschueler-overview/fahrschueler-overview.component";
+import { FahrschuelerOverviewComponent } from "./fahrschueler/fahrschueler-overview/fahrschueler-overview.component";
 import { UiHeaderComponent } from "./ui-header/ui-header.component";
 
 @Component({

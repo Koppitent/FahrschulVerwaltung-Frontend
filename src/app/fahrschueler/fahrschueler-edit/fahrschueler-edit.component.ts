@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Fahrschueler } from '../interfaces/fahrschueler.interface';
+import { Fahrschueler } from '../../interfaces/fahrschueler.interface';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
