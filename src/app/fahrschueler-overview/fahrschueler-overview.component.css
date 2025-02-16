@@ -1,7 +1,20 @@
-/* Styling for the heading */
+.fs-list {
+	display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+	width: 80vw;
+	padding-left: 20vw;
+}
+
+.dropdown-menu label {
+	cursor: pointer;
+	user-select: none;
+}
+
 .fs-head {
-  text-align: center;
+  text-align: left;
   margin-bottom: 20px;
+	width: fit-content;
 }
 
 .fs-head h1 {
@@ -9,11 +22,6 @@
   font-size: 2rem;
   font-weight: bold;
   color: #333;
-}
-
-.list-fahrschueler {
-  display: flex;
-  justify-content: center;
 }
 
 .tb {
@@ -80,7 +88,6 @@
 .dropdown {
   position: relative;
   display: inline-flex;
-	padding-right: 60vw;
 }
 
 .dropdown-button {
@@ -96,7 +103,7 @@
   position: absolute;
   background: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  padding: 0px;
   border-radius: 5px;
   width: 200px;
   top: 40px;
@@ -108,31 +115,39 @@ label {
   align-items: center;
   gap: 5px;
   margin-bottom: 8px;
-}
-
-.apply-btn {
-  background: green;
-  color: white;
-  padding: 5px;
-  border: none;
-  cursor: pointer;
-  border-radius: 3px;
-  width: 100%;
-  margin-top: 10px;
+	color: gray;
 }
 
 .reset-btn {
-  background: red;
-  color: white;
+  background: #f8f9fa;
+  color: gray;
   padding: 5px;
   border: none;
   cursor: pointer;
-  border-radius: 3px;
   width: 100%;
-  margin-bottom: 8px;
+  margin: 10px 0 0 0;
 	transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .reset-btn:hover {
-	background: rgb(136, 28, 28);
+	background: #e9ecef;
+}
+
+.dpd-seperator {
+	border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 10px 0;
+  width: 100%;
+}
+
+.search-container {
+  margin-bottom: 15px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }

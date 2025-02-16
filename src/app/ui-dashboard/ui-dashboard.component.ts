@@ -1,0 +1,84 @@
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, Input } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-ui-dashboard',
+  standalone: true,
+  imports: [RouterLink],
+  templateUrl: './ui-dashboard.component.html',
+  styleUrl: './ui-dashboard.component.css',
+  animations: [
+    trigger('sidebarAnimation', [
+      transition(':enter', [
+        style({ left: '-18vw' }),
+        animate('300ms ease-out', style({ left: '0', opacity: 1 })),
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({ left: '-18vw' })),
+      ]),
+    ]),
+    trigger('dropdownAnimation', [
+      state(
+        'void',
+        style({
+          transform: 'translateY(-10%)',
+          opacity: 0,
+          height: 0,
+          overflow: 'hidden',
+        })
+      ),
+      state(
+        '*',
+        style({
+          transform: 'translateY(0)',
+          opacity: 1,
+          height: '*',
+          overflow: 'hidden',
+        })
+      ),
+      transition('void <=> *', animate('300ms ease-in-out')),
+    ]),
+  ],
+})
+export class UiDashboardComponent {
+  @Input({ required: true }) isVisible = false;
+
+  private options: Map<string, boolean>;
+  constructor() {
+    this.options = new Map();
+    this.options.set('fahrschule', false);
+    this.options.set('option2', false);
+  }
+
+  setOptionActive(option: string): void {
+    if (this.options.has(option)) {
+      const isCurrentlyActive = this.options.get(option);
+      if (isCurrentlyActive) {
+        this.options.set(option, false);
+      } else {
+        this.options.forEach((_, key) => {
+          this.options.set(key, key === option);
+        });
+      }
+    } else {
+      console.warn(`Option "${option}" does not exist.`);
+    }
+  }
+
+  close() {
+    this.isVisible = false;
+  }
+
+  getOption(key: string): boolean {
+    return this.options.get(key) || false;
+  }
+
+  toggleExpandFahrschueler() {
+    this.setOptionActive('fahrschule');
+  }
+
+  toggleExpandOption2() {
+    this.setOptionActive('option2');
+  }
+}

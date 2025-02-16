@@ -21,8 +21,14 @@ export class FahrschuelerService {
     return this.http.post<Fahrschueler>(this.apiUrl, fahrschueler);
   }
 
-	deleteFahrschueler(id: number): Observable<void> {
-		return this.http.delete<void>(`${this.apiUrl}/${id}`);
-	}
+  deleteFahrschueler(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 
+  updateFahrschueler(fahrschueler: Fahrschueler): Observable<Fahrschueler> {
+    return this.http.put<Fahrschueler>(
+      `${this.apiUrl}/${fahrschueler.id}`,
+      fahrschueler
+    );
+  }
 }

@@ -1,0 +1,19 @@
+@if (isVisible) {
+	<div @sidebarAnimation id="mySidenav" class="sidenav">
+		<button (click)="toggleExpandFahrschueler()">Fahrschüler</button>
+		@if(getOption('fahrschule')) {
+			<div @dropdownAnimation >
+				<a routerLink='/fahrschueler' draggable="false">Fahrschüler anzeigen</a>
+				<a routerLink='/create-fahrschueler' draggable="false">Fahrschüler erstellen</a>
+			</div>
+		}
+		<button (click)="toggleExpandOption2()">Fahrschüler 2</button>
+		@if(getOption('option2')) {
+			<div @dropdownAnimation >
+				<a routerLink='/fahrschueler' draggable="false">Fahrschüler anzeigen</a>
+				<a routerLink='/create-fahrschueler' draggable="false">Fahrschüler erstellen</a>
+			</div>
+		}
+		<button>Fahrschüler 3</button>
+	</div>
+}

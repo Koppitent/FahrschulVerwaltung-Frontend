@@ -1,0 +1,78 @@
+<form [formGroup]="fahrschuelerForm" (ngSubmit)="onSubmit()" class="form-container">
+  <div class="form-grid">
+    <div class="form-group">
+      <label>Name:</label>
+      <input type="text" formControlName="name" required class="form-input">
+			<small *ngIf="(fahrschuelerForm.get('name')?.invalid && fahrschuelerForm.get('name')?.touched) || 
+                    (submitted && fahrschuelerForm.get('name')?.invalid)" class="error">
+        * Name is required
+      </small>
+    </div>
+    <div class="form-group">
+      <label>Vorname:</label>
+      <input type="text" formControlName="vorname" required class="form-input">
+			<small *ngIf="(fahrschuelerForm.get('vorname')?.invalid && fahrschuelerForm.get('vorname')?.touched) || 
+                    (submitted && fahrschuelerForm.get('vorname')?.invalid)" class="error">
+        * Vorname is required
+      </small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Email:</label>
+    <input type="email" formControlName="email" required class="form-input">
+		<small *ngIf="(fahrschuelerForm.get('email')?.invalid && fahrschuelerForm.get('email')?.touched) || 
+                  (submitted && fahrschuelerForm.get('email')?.invalid)" class="error">
+      * Please enter a valid email
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Phone:</label>
+    <input type="text" formControlName="phone" class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label>Geburtsdatum:</label>
+    <input type="date" formControlName="geburtsdatum" class="form-input">
+		<small *ngIf="(fahrschuelerForm.get('geburtsdatum')?.invalid && fahrschuelerForm.get('geburtsdatum')?.touched) || 
+                  (submitted && fahrschuelerForm.get('geburtsdatum')?.invalid)" class="error">
+      * Geburtsdatum is required
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Ort:</label>
+    <input type="text" formControlName="ort" class="form-input">
+		<small *ngIf="(fahrschuelerForm.get('ort')?.invalid && fahrschuelerForm.get('ort')?.touched) || 
+                  (submitted && fahrschuelerForm.get('ort')?.invalid)" class="error">
+      * Ort is required
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Straße:</label>
+    <input type="text" formControlName="strasse" class="form-input">
+		<small *ngIf="(fahrschuelerForm.get('strasse')?.invalid && fahrschuelerForm.get('strasse')?.touched) || 
+                  (submitted && fahrschuelerForm.get('strasse')?.invalid)" class="error">
+      * Straße is required
+    </small>
+  </div>
+
+  <!-- Klassen as multiple checkboxes -->
+  <fieldset class="checkbox-group">
+    <legend>Klassen:</legend>
+    <div class="checkbox-grid">
+      <label *ngFor="let klasse of klassenOptions; let i = index" class="checkbox-label">
+        <input type="checkbox" [value]="klasse" (change)="onKlasseChange($event, i)" class="checkbox-input">
+        {{ klasse }}
+      </label>
+    </div>
+  </fieldset>
+
+  <button type="submit" class="submit-button">Submit</button>
+</form>
+
+
+		<p *ngIf="messageOut" class="m-out" [ngClass]="messageType">{{ messageOut }}</p>
+    <p *ngIf="false">Submitted Data: {{ fahrschueler | json }}</p>

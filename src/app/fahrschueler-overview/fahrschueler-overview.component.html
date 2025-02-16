@@ -1,13 +1,24 @@
+<div class="fs-list">
 <div class="fs-head">
 	<h1>Fahrschüler List</h1>
+	<div class="search-container">
+  <input
+    type="text"
+    class="search-input"
+    placeholder="Suche nach Namen..."
+    [(ngModel)]="searchTerm"
+    (input)="filterFahrschueler()"
+  />
+</div>
 	<!-- Dropdown Menu ---->
 	<div class="dropdown">
   <button (click)="toggleDropdown()" class="dropdown-button">
-    Filter Options ⏷
+    Filter Options {{fDD}}
   </button>
 @if (dropdownOpen) {
-  <div class="dropdown-menu">
+  <div @dropdownAnimation class="dropdown-menu">
 			<button type="button" class="reset-btn" (click)="resetFilters()">Reset</button>
+			<hr class="dpd-seperator">
 			<label>
         <input type="checkbox" [(ngModel)]="idVisible" (change)="changeIdVisible($event)" />
         ID anzeigen
@@ -33,7 +44,7 @@
 </div>
 
 </div>
-<div class="list-fahrschueler">
+
 	<table class="tb">
 		<tr class="tb-head">
 			@if (idVisible) {
@@ -55,7 +66,7 @@
 			}
 			<th>Aktion</th>
 		</tr>
-		@for (fahrschueler of fahrschuelerList; track fahrschueler.id) {
+		@for (fahrschueler of filteredFahrschuelerList; track fahrschueler.id) {
 			<tr class="ls-content">
 				@if (idVisible) {
 					<td>{{ fahrschueler.id }}</td>
@@ -76,7 +87,7 @@
 				}
 				<div class="btns-ls">
 				<td>
-					<button class="btn-aktionen btn-edit">Bearbeiten</button>
+					<button class="btn-aktionen btn-edit" (click)="editFahrschueler(fahrschueler)">Bearbeiten</button>
 					<button class="btn-aktionen" (click)="deleteFahrschueler(fahrschueler.id!)">Delete</button>
 				</td>
 				</div>
@@ -84,5 +95,7 @@
 		}
 	</table>
 </div>
-<br>
-<button (click)="clickButton()">Fahrschüler hinzufügen</button>
+@if(currentFahrschueler) {
+	<app-fahrschueler-edit [fahrschueler]="currentFahrschueler" (close)="closeEditFahrschueler()" (save)="saveEditedFahrschueler($event)" />
+}
+<button (click)="addDummy()">Add Dummy</button>

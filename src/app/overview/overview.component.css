@@ -1,0 +1,27 @@
+.fs-vw {
+	display: flex;
+	max-width: 75vw;
+	justify-self: center;
+	justify-content: flex-start;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 2vw;
+}
+
+.inf-card {
+  margin-top: 2vh;
+  max-width: 20vw;
+  max-height: 50vh;
+  min-height: 30vh;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  background-color: white;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.inf-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
