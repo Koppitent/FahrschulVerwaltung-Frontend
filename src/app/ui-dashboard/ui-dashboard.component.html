@@ -1,19 +1,23 @@
 @if (isVisible) {
-	<div @sidebarAnimation id="mySidenav" class="sidenav">
-		<button (click)="toggleExpandFahrschueler()">Fahrschüler</button>
-		@if(getOption('fahrschuler')) {
-			<div @dropdownAnimation >
-				<a routerLink='/fahrschueler' draggable="false">Fahrschüler anzeigen</a>
-				<a routerLink='/create-fahrschueler' draggable="false">Fahrschüler erstellen</a>
-			</div>
-		}
-		<button (click)="toggleExpandFahrlehrer()">Fahrlehrer</button>
-		@if(getOption('fahrlehrer')) {
-			<div @dropdownAnimation >
-				<a routerLink='/fahrlehrer' draggable="false">Fahrlehrer anzeigen</a>
-				<a routerLink='/create-fahrlehrer' draggable="false">Fahrlehrer erstellen</a>
-			</div>
-		}
-		<button routerLink='/create-praxis'>Praxisstunde hinzufügen</button>
-	</div>
+<div @sidebarAnimation id="mySidenav" class="sidenav">
+  <button (click)="toggleExpandFahrschueler()">Fahrschüler</button>
+  @if(getOption('fahrschuler')) {
+  <div @dropdownAnimation>
+    <a routerLink="/fahrschueler" draggable="false">Fahrschüler anzeigen</a>
+    <a routerLink="/create-fahrschueler" draggable="false"
+      >Fahrschüler erstellen</a
+    >
+  </div>
+  }
+  <button (click)="toggleExpandFahrlehrer()">Fahrlehrer</button>
+  @if(getOption('fahrlehrer')) {
+  <div @dropdownAnimation>
+    <a routerLink="/fahrlehrer" draggable="false">Fahrlehrer anzeigen</a>
+    <a routerLink="/create-fahrlehrer" draggable="false"
+      >Fahrlehrer erstellen</a
+    >
+  </div>
+  }
+  <button routerLink="/create-praxis">Praxisstunde hinzufügen</button>
+</div>
 }

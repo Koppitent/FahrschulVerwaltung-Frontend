@@ -1,24 +1,25 @@
 .fs-list {
-	display: flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
-	width: 80vw;
-	padding-left: 20vw;
+  width: 80vw;
+  padding-left: 20vw;
+  transition: margin-left 0.5s ease;
 }
 
 .dropdown-menu label {
-	cursor: pointer;
-	user-select: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 .fs-head {
   text-align: left;
   margin-bottom: 20px;
-	width: fit-content;
+  width: fit-content;
 }
 
 .fs-head h1 {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 2rem;
   font-weight: bold;
   color: #333;
@@ -40,7 +41,8 @@
   font-size: 18px;
 }
 
-.tb th, .tb td {
+.tb th,
+.tb td {
   padding: 12px 20px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -48,6 +50,11 @@
 
 .tb tr:last-child td {
   border-bottom: none;
+}
+
+td {
+  max-width: 10vw;
+  word-wrap: break-word;
 }
 
 .ls-content:nth-child(even) {
@@ -68,7 +75,7 @@
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s ease, transform 0.2s ease;
-	margin-right: 0.5vw;
+  margin-right: 0.5vw;
 }
 
 .btn-aktionen:hover {
@@ -77,11 +84,11 @@
 }
 
 .btn-edit {
-	background: #329a4c;
+  background: #329a4c;
 }
 
 .btn-edit:hover {
-	background-color: #236934;
+  background-color: #236934;
 }
 
 /* DropdownMenu */
@@ -115,7 +122,7 @@ label {
   align-items: center;
   gap: 5px;
   margin-bottom: 8px;
-	color: gray;
+  color: gray;
 }
 
 .reset-btn {
@@ -126,15 +133,15 @@ label {
   cursor: pointer;
   width: 100%;
   margin: 10px 0 0 0;
-	transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .reset-btn:hover {
-	background: #e9ecef;
+  background: #e9ecef;
 }
 
 .dpd-seperator {
-	border: none;
+  border: none;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin: 10px 0;
   width: 100%;

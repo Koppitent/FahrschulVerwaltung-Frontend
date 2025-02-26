@@ -1,10 +1,14 @@
 <div class="hdm">
-	<span class="dsh" (click)="changeDashVisibility()"><p class="dsh-symbol">&#9776;</p></span>
-	<div class="hd-ul">
-		<ul>
-			<li><a href="" routerLink="/">Home</a></li>
-			<li><a href="">Something else</a></li>
-		</ul>
-	</div>
+  <span class="dsh" (click)="changeDashVisibility()"
+    ><p class="dsh-symbol">&#9776;</p></span
+  >
+  <div class="hd-ul">
+    <ul>
+      <li><a href="" routerLink="/">Home</a></li>
+      <li><a href="" routerLink="/something-else">Something else</a></li>
+    </ul>
+  </div>
 </div>
-<app-ui-dashboard [isVisible]="dashVisibility" />
+<div class="dsh-main">
+  <app-ui-dashboard [isVisible]="dashVisibility" />
+</div>

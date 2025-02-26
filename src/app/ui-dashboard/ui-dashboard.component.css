@@ -7,21 +7,22 @@
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 30px;
-	width: 18vw;
+  width: 18vw;
+  height: 100vh;
 }
 
 .sidenav button {
-	width: 100%;
-	cursor: pointer;
-	padding: 10px 15px 10px 0;
-	background: #222;
+  width: 100%;
+  cursor: pointer;
+  padding: 10px 15px 10px 0;
+  background: #222;
   color: #aaa;
   cursor: pointer;
-	transition: background 0.3s ease, transform 0.2s ease;
-	display: flex;
-	justify-content: center;
-	font-size: 1vw;
-	border: #0f0f0f;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  font-size: 1vw;
+  border: #0f0f0f;
 }
 
 .sidenav button:hover {
@@ -30,18 +31,18 @@
 }
 
 .sidenav a {
-	padding: 10px 0 10px 0;
-	display: flex;
-	justify-content: flex-end;
+  padding: 10px 0 10px 0;
+  display: flex;
+  justify-content: flex-end;
   width: 100%;
   text-decoration: none;
   font-size: 1vw;
   color: #818181;
   display: block;
   transition: 0.3s;
-	background-color: #1e1c1c;
-	cursor: pointer;
-	padding-left: 10px;
+  background-color: #1e1c1c;
+  cursor: pointer;
+  padding-left: 10px;
 }
 
 .sidenav a:hover {

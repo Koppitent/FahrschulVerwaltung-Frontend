@@ -1,21 +1,21 @@
 .hdm {
-	display: flex;
-	align-items: center;
-	flex-direction: row;
-	background-color: #111;
-	height: 3vw;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  background-color: #111;
+  height: 3vw;
 }
 
 .hd-ul ul {
-	display: flex;
-	align-items: center;
-	list-style-type: none;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
 }
 
 .hd-ul ul li {
-	display: flex;
-	padding: 0.9vw;
-	transition: background 0.3s ease-in-out;
+  display: flex;
+  padding: 0.9vw;
+  transition: background 0.3s ease-in-out;
 }
 
 ul li:hover {
@@ -24,30 +24,30 @@ ul li:hover {
 }
 
 .hd-ul ul li a {
-	color: white;
-	text-decoration: none;
-	font-size: 1.1vw;
+  color: white;
+  text-decoration: none;
+  font-size: 1.1vw;
 }
 
 .dsh {
-	justify-self: left;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 1.5vw;
-	height: 1.5vw;
-	cursor: pointer;
-	padding: 5px;
-	border-radius: 100px;
-	margin-left: 20px;
-	transition: 0.3s;
+  justify-self: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5vw;
+  height: 1.5vw;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 100px;
+  margin-left: 20px;
+  transition: 0.3s;
 }
 
 .dsh p {
-	font-size: 24px;
-	color: rgb(94, 94, 94);
+  font-size: 24px;
+  color: rgb(94, 94, 94);
 }
 
 .dsh:hover {
-	background-color: #717171;
+  background-color: #717171;
 }
