@@ -15,6 +15,10 @@ export class FahrschuelerService {
   getFahrschueler(): Observable<Fahrschueler[]> {
     return this.http.get<Fahrschueler[]>(this.apiUrl);
   }
+	
+	getFahrschuelerById(id: number): Observable<Fahrschueler> {
+		return this.http.get<Fahrschueler>(this.apiUrl+'/'+id);
+	}
 
   // Create a new Fahrschueler
   createFahrschueler(fahrschueler: Fahrschueler): Observable<Fahrschueler> {

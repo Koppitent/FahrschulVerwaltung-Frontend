@@ -4,11 +4,16 @@ import { Fahrschueler } from '../../interfaces/fahrschueler.interface';
 import { FormsModule } from '@angular/forms';
 import { trigger, style, transition, animate, state } from '@angular/animations';
 import { FahrschuelerEditComponent } from "../fahrschueler-edit/fahrschueler-edit.component";
+import { FahrschuelerProfileComponent } from '../fahrschueler-profile/fahrschueler-profile.component';
 
 @Component({
   selector: 'app-fahrschueler-overview',
   standalone: true,
-  imports: [FormsModule, FahrschuelerEditComponent],
+  imports: [
+    FormsModule,
+    FahrschuelerEditComponent,
+    FahrschuelerProfileComponent,
+  ],
   templateUrl: './fahrschueler-overview.component.html',
   styleUrl: './fahrschueler-overview.component.css',
   animations: [
@@ -49,12 +54,25 @@ export class FahrschuelerOverviewComponent implements OnInit {
   idVisible = false;
   currentFahrschueler: Fahrschueler | null = null;
 
-  editFahrschueler(fs: Fahrschueler){
-		this.currentFahrschueler = fs;
-	}
+  selectedInfoFahrschueler: Fahrschueler | null = null;
+  selectedModalFahrschueler: Fahrschueler = {};
+  selectFahrschuelerModal(fs: Fahrschueler) {
+    if (this.selectedInfoFahrschueler != null) return;
+    this.selectedInfoFahrschueler = fs;
+    this.selectedModalFahrschueler = fs;
+    console.log('selected new Fahrschueler');
+  }
 
-	saveEditedFahrschueler(fs: Fahrschueler) {
-		this.fahrschuelerService.updateFahrschueler(fs).subscribe({
+  closeFahrschuelerInfoModal() {
+    this.selectedInfoFahrschueler = null;
+  }
+
+  editFahrschueler(fs: Fahrschueler) {
+    this.currentFahrschueler = fs;
+  }
+
+  saveEditedFahrschueler(fs: Fahrschueler) {
+    this.fahrschuelerService.updateFahrschueler(fs).subscribe({
       next: (updatedFahrschueler) => {
         console.log('Update successful:', updatedFahrschueler);
       },
@@ -65,12 +83,12 @@ export class FahrschuelerOverviewComponent implements OnInit {
         console.log('Update request completed.');
       },
     });
-		this.closeEditFahrschueler();
-	}
+    this.closeEditFahrschueler();
+  }
 
-	closeEditFahrschueler() {
-		this.currentFahrschueler = null;
-	}
+  closeEditFahrschueler() {
+    this.currentFahrschueler = null;
+  }
 
   changeGeburtVisible(event: Event) {
     const check = (event.target as HTMLInputElement).checked;
@@ -151,7 +169,7 @@ export class FahrschuelerOverviewComponent implements OnInit {
       (newFahrschueler) => {
         console.log('Created:', newFahrschueler);
         this.fahrschuelerList.push(newFahrschueler);
-				this.filterFahrschueler();
+        this.filterFahrschueler();
       },
       (error) => {
         console.error('Error:', error);
@@ -166,7 +184,7 @@ export class FahrschuelerOverviewComponent implements OnInit {
         this.fahrschuelerList = this.fahrschuelerList.filter(
           (f) => f.id !== id
         );
-				this.filterFahrschueler();
+        this.filterFahrschueler();
       },
       (error) => {
         console.error('Error deleting Fahrschüler:', error);

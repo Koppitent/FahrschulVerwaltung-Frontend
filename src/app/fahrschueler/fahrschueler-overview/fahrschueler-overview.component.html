@@ -86,7 +86,7 @@
       <th>Aktion</th>
     </tr>
     @for (fahrschueler of filteredFahrschuelerList; track fahrschueler.id) {
-    <tr class="ls-content">
+    <tr class="ls-content" (click)="selectFahrschuelerModal(fahrschueler)">
       @if (idVisible) {
       <td>{{ fahrschueler.id }}</td>
       }
@@ -106,13 +106,13 @@
         <td>
           <button
             class="btn-aktionen btn-edit"
-            (click)="editFahrschueler(fahrschueler)"
+            (click)="editFahrschueler(fahrschueler); $event.stopPropagation()"
           >
             Bearbeiten
           </button>
           <button
             class="btn-aktionen"
-            (click)="deleteFahrschueler(fahrschueler.id!)"
+            (click)="deleteFahrschueler(fahrschueler.id!); $event.stopPropagation()"
           >
             Delete
           </button>
@@ -128,5 +128,8 @@
   (close)="closeEditFahrschueler()"
   (save)="saveEditedFahrschueler($event)"
 />
+}
+@if(selectedInfoFahrschueler) {
+	<app-fahrschueler-profile [fahrschueler]="selectedInfoFahrschueler" (modalCloseClicked)="closeFahrschuelerInfoModal()" />
 }
 <button (click)="addDummy()">Add Dummy</button>

@@ -112,3 +112,8 @@
   margin-top: 5px;
   display: block;
 }
+
+h1 {
+	justify-self: center;
+	margin-top: 3vh;
+}

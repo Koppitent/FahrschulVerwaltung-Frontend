@@ -1,0 +1,15 @@
+<div class="praxisstunde-card">
+    <div class="card-header">
+        <h3>Praxisstunde</h3>
+        <p>{{ praxis?.datum | date:'dd.MM.yyyy' }}</p>
+    </div>
+    <div class="card-body">
+        <p><strong>Typ:</strong> {{ praxis?.typ }}</p>
+        @if(showFahrlehrer) {
+					<p><strong>Fahrlehrer:</strong> {{ fahrlehrer.vorname }} {{ fahrlehrer.name }}</p>
+				}
+				@if(showFahrschueler) {
+        	<p><strong>Fahrschüler:</strong> {{ fahrschueler.vorname }} {{ fahrschueler.name }}</p>
+				}
+    </div>
+</div>

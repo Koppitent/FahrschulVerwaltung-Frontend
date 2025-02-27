@@ -1,0 +1,45 @@
+<div class="fullScreenModal">
+    <div class="modal-header">
+        <div class="avatar">{{ fahrschueler?.vorname?.charAt(0) }}{{ fahrschueler?.name?.charAt(0) }}</div>
+        <div class="info">
+            <h2>{{ fahrschueler?.vorname }} {{ fahrschueler?.name }}</h2>
+            <p>Email: {{ fahrschueler?.email }}</p>
+            <p>Telefon: {{ fahrschueler?.phone }}</p>
+            <p>Geburtsdatum: {{ fahrschueler?.geburtsdatum | date:'dd.MM.yyyy' }}</p>
+            <p>Klassen: {{ fahrschueler?.klassen?.join(', ') }}</p>
+            <p>Adresse: {{ fahrschueler?.strasse }}, {{ fahrschueler?.ort }}</p>
+        </div>
+    </div>
+    
+    <div class="tabs">
+        <button (click)="selectedTab = 'praxis'" [class.active]="selectedTab === 'praxis'">Praxisstunden</button>
+        <button (click)="selectedTab = 'theorie'" [class.active]="selectedTab === 'theorie'">Theoriestunden</button>
+        <button (click)="selectedTab = 'profil'" [class.active]="selectedTab === 'profil'">Profil</button>
+    </div>
+    
+    <div class="content">
+        <div *ngIf="selectedTab === 'praxis'" class="praxis-content">
+            <button class="arrow left" (click)="scrollLeft()">&#9664;</button>
+            <div class="praxis-list-wrapper" #praxisContainer>
+                <div class="praxis-list">
+                  @for (praxis of praxisstundenList; track $index) {
+										<app-praxisstunde-card [praxis]="praxis" />
+									} @empty {
+										<p class="error-message-content">Keine Praxisstunden vorhanden bisher</p>
+									}
+                </div>
+            </div>
+            <button class="arrow right" (click)="scrollRight()">&#9654;</button>
+        </div>
+        
+        <div *ngIf="selectedTab === 'theorie'">
+            <p class="error-message-content">Theoriestunden werden hier angezeigt...</p>
+        </div>
+        
+        <div *ngIf="selectedTab === 'profil'">
+            <p class="error-message-content">Weitere Profilinformationen...</p>
+        </div>
+    </div>
+    
+    <button class="close-btn" (click)="closeModal()">Schließen</button>
+</div>
