@@ -1,9 +1,14 @@
+.fs-content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
 .fs-list {
-  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 80vw;
-  padding-left: 20vw;
+  transition: margin-left 0.5s ease;
 }
 
 .dropdown-menu label {
@@ -25,13 +30,14 @@
 }
 
 .tb {
-  width: 80%;
-  max-width: 1300px;
+  width: 80vw;
+  max-width: 80vw;
   border-collapse: collapse;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   background: white;
   border-radius: 2px;
   overflow: hidden;
+	white-space: nowrap;
 }
 
 .tb-head {
@@ -52,6 +58,11 @@
   border-bottom: none;
 }
 
+td {
+  max-width: 10vw;
+  word-wrap: break-word;
+}
+
 .ls-content:nth-child(even) {
   background: #f8f9fa;
 }
@@ -59,6 +70,10 @@
 .ls-content:hover {
   background: #e9ecef;
   transition: background 0.3s ease;
+}
+
+.ls-content {
+	cursor: pointer;
 }
 
 .btn-aktionen {
@@ -98,7 +113,7 @@
   padding: 10px 15px;
   border: none;
   cursor: pointer;
-  border-radius: 1px;
+  border-radius: 2px;
 }
 
 .dropdown-menu {
@@ -140,11 +155,6 @@ label {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   margin: 10px 0;
   width: 100%;
-}
-
-td {
-  max-width: 10vw;
-  word-wrap: break-word;
 }
 
 .search-container {

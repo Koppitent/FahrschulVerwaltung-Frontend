@@ -1,9 +1,15 @@
+.ghost-hdm {
+	height: 3.1vw;
+}
+
 .hdm {
   display: flex;
   align-items: center;
   flex-direction: row;
   background-color: #111;
-  height: 3vw;
+  height: 3.1vw;
+	width: 100vw;
+	position: fixed;
 }
 
 .hd-ul ul {
@@ -23,10 +29,11 @@ ul li:hover {
   cursor: pointer;
 }
 
-.hd-ul ul li a {
+.hd-ul ul a {
   color: white;
   text-decoration: none;
   font-size: 1.1vw;
+	user-select: none;
 }
 
 .dsh {

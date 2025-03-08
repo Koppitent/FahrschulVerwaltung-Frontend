@@ -6,6 +6,12 @@
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 2vw;
+	margin-left: 5vw;
+	margin-right: 5vw;
+}
+
+:host {
+	max-width: 82vw;
 }
 
 .inf-card {

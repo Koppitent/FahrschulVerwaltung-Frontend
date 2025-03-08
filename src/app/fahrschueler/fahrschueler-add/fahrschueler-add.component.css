@@ -1,6 +1,13 @@
+:host {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
 .form-container {
   max-width: 600px;
-  margin: 5vh auto;
+  margin: 1vh auto;
   background: #fff;
   padding: 20px;
   border-radius: 8px;
@@ -114,6 +121,6 @@
 }
 
 h1 {
-	justify-self: center;
-	margin-top: 3vh;
+	padding: 1vw;
+	border-bottom: 1px solid #666;
 }

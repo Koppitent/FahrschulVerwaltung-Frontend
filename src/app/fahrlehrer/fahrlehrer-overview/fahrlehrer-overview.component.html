@@ -1,3 +1,4 @@
+<div class="fs-content">
 <div class="fs-list">
 <div class="fs-head">
 	<h1>Fahrlehrer List</h1>
@@ -98,4 +99,4 @@
 @if(currentFahrlehrer) {
 	<app-fahrlehrer-edit [fahrlehrer]="currentFahrlehrer" (close)="closeEditFahrlehrer()" (save)="saveEditedFahrlehrer($event)" />
 }
-<button (click)="addDummy()">Add Dummy</button>
+</div>

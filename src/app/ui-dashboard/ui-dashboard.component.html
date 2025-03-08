@@ -1,4 +1,6 @@
 
+<div class="actual-sidenav" [ngClass]="{ 'open': isVisible }"></div>
+
 <div id="mySidenav" class="sidenav" [ngClass]="{ 'open': isVisible }">
   <button (click)="toggleExpandFahrschueler()">Fahrschüler</button>
   @if(getOption('fahrschuler')) {

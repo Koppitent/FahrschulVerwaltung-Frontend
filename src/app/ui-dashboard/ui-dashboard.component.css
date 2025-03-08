@@ -5,10 +5,20 @@
   padding-top: 30px;
   width: 0vw;
   height: 100vh;
+	position: fixed;
 	transition: width 0.5s;
 }
 
 .sidenav.open {
+	width: 18vw;
+}
+
+.actual-sidenav {
+  transition: 0.5s width;
+  width: 0vw;
+}
+
+.actual-sidenav.open {
 	width: 18vw;
 }
 
@@ -24,6 +34,7 @@
   justify-content: center;
   font-size: 1vw;
   border: #0f0f0f;
+	white-space: nowrap;
 }
 
 .sidenav button:hover {
@@ -44,6 +55,7 @@
   background-color: #1e1c1c;
   cursor: pointer;
   padding-left: 10px;
+	white-space: nowrap;
 }
 
 .sidenav a:hover {
