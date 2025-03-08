@@ -2,24 +2,20 @@
 <div class="actual-sidenav" [ngClass]="{ 'open': isVisible }"></div>
 
 <div id="mySidenav" class="sidenav" [ngClass]="{ 'open': isVisible }">
-  <button (click)="toggleExpandFahrschueler()">Fahrschüler</button>
-  @if(getOption('fahrschuler')) {
-  <div @dropdownAnimation>
-    <a routerLink="/fahrschueler" draggable="false">Fahrschüler anzeigen</a>
-    <a routerLink="/create-fahrschueler" draggable="false"
-      >Fahrschüler erstellen</a
-    >
-  </div>
-  }
-  <button (click)="toggleExpandFahrlehrer()">Fahrlehrer</button>
-  @if(getOption('fahrlehrer')) {
-  <div @dropdownAnimation>
-    <a routerLink="/fahrlehrer" draggable="false">Fahrlehrer anzeigen</a>
-    <a routerLink="/create-fahrlehrer" draggable="false"
-      >Fahrlehrer erstellen</a
-    >
-  </div>
-  }
-  <button routerLink="/create-praxis">Praxisstunde hinzufügen</button>
+
+	@for (button of dashboard.buttons; track $index) {
+		@if(button.routerLink) {
+			<button [routerLink]="button.routerLink">{{ button.label }}</button>
+		} @else {
+			<button (click)="toggleExpand(button.label)">{{ button.label }}</button>
+			@if (activeButton && activeButton === button.label) {
+				<div @dropdownAnimation>
+					@for (item of button.items; track $index) {
+						<a routerLink="{{ item.routerLink }}" draggable="false">{{ item.label }}</a>
+					}
+				</div>
+			}
+		}
+	}
 </div>
 

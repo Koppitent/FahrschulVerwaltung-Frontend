@@ -8,6 +8,7 @@ import {
 import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Dashboard } from '../interfaces/dashboard.interface';
 
 @Component({
   selector: 'app-ui-dashboard',
@@ -47,6 +48,46 @@ export class UiDashboardComponent {
     this.options = new Map();
     this.options.set('fahrschuler', false);
     this.options.set('fahrlehrer', false);
+  }
+
+  dashboard: Dashboard = {
+    buttons: [
+      {
+        label: 'Fahrschüler',
+        items: [
+          {
+            label: 'Fahrschüler anzeigen',
+            routerLink: '/fahrschueler',
+          },
+          {
+            label: 'Fahrschüler erstellen',
+            routerLink: '/fahrschueler/erstellen',
+          },
+        ],
+      },
+      {
+        label: 'Fahrlehrer',
+        items: [
+          {
+            label: 'Fahrlehrer anzeigen',
+            routerLink: '/fahrlehrer',
+          },
+          {
+            label: 'Fahrlehrer erstellen',
+            routerLink: '/fahrlehrer/erstellen',
+          },
+        ],
+      },
+      {
+        label: 'Praxisstunden erstellen',
+        routerLink: '/praxisstunden-erstellen',
+      },
+    ],
+  };
+
+  activeButton: string | null = null;
+  toggleExpand(label: string) {
+    this.activeButton = this.activeButton === label ? null : label;
   }
 
   setOptionActive(option: string): void {

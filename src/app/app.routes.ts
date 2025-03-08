@@ -11,9 +11,12 @@ import { PraxisstundeCreateComponent } from './praxisstunden/praxisstunde-create
 export const routes: Routes = [
   { path: '', component: OverviewComponent },
   { path: 'fahrschueler', component: FahrschuelerOverviewComponent },
-  { path: 'create-fahrschueler', component: FahrschuelerAddComponent },
+  {
+    path: 'fahrschueler/erstellen',
+    component: FahrschuelerAddComponent,
+  },
   { path: 'fahrlehrer', component: FahrlehrerOverviewComponent },
-  { path: 'create-fahrlehrer', component: FahrlehrerAddComponent },
-  { path: 'create-praxis', component: PraxisstundeCreateComponent },
+  { path: 'fahrlehrer/erstellen', component: FahrlehrerAddComponent },
+  { path: 'praxisstunden-erstellen', component: PraxisstundeCreateComponent },
   { path: '**', component: NotFoundComponent },
 ];
