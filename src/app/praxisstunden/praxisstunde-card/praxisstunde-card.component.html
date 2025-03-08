@@ -4,7 +4,7 @@
         <p>{{ praxis?.datum | date:'dd.MM.yyyy' }}</p>
     </div>
     <div class="card-body">
-        <p><strong>Typ:</strong> {{ praxis?.typ }}</p>
+        <p><strong>Art der Fahrstunde:</strong> {{ praxis?.typ }}</p>
         @if(showFahrlehrer) {
 					<p><strong>Fahrlehrer:</strong> {{ fahrlehrer.vorname }} {{ fahrlehrer.name }}</p>
 				}
