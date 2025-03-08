@@ -1,2 +1,6 @@
-<app-ui-header />
-<router-outlet />
+
+<app-ui-header class="app-ui-header" (triggerVisibility)="changeVisibility()" />
+<div class="content-all">
+	<app-ui-dashboard class="app-ui-dashboard" [isVisible]="dashVisibility" />
+	<router-outlet class="router-outlet" />
+</div>

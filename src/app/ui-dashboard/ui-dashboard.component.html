@@ -1,5 +1,5 @@
-@if (isVisible) {
-<div @sidebarAnimation id="mySidenav" class="sidenav">
+
+<div id="mySidenav" class="sidenav" [ngClass]="{ 'open': isVisible }">
   <button (click)="toggleExpandFahrschueler()">Fahrschüler</button>
   @if(getOption('fahrschuler')) {
   <div @dropdownAnimation>
@@ -20,4 +20,4 @@
   }
   <button routerLink="/create-praxis">Praxisstunde hinzufügen</button>
 </div>
-}
+

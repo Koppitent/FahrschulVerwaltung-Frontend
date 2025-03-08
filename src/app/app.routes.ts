@@ -6,6 +6,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { FahrschuelerAddComponent } from './fahrschueler/fahrschueler-add/fahrschueler-add.component';
 import { FahrlehrerAddComponent } from './fahrlehrer/fahrlehrer-add/fahrlehrer-add.component';
 import { FahrlehrerOverviewComponent } from './fahrlehrer/fahrlehrer-overview/fahrlehrer-overview.component';
+import { PraxisstundeCreateComponent } from './praxisstunden/praxisstunde-create/praxisstunde-create.component';
 
 export const routes: Routes = [
   { path: '', component: OverviewComponent },
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: 'create-fahrschueler', component: FahrschuelerAddComponent },
   { path: 'fahrlehrer', component: FahrlehrerOverviewComponent },
   { path: 'create-fahrlehrer', component: FahrlehrerAddComponent },
+  { path: 'create-praxis', component: PraxisstundeCreateComponent },
   { path: '**', component: NotFoundComponent },
 ];

@@ -5,25 +5,17 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-ui-dashboard',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, NgClass],
   templateUrl: './ui-dashboard.component.html',
   styleUrl: './ui-dashboard.component.css',
   animations: [
-    trigger('sidebarAnimation', [
-      transition(':enter', [
-        style({ left: '-18vw' }),
-        animate('300ms ease-out', style({ left: '0', opacity: 1 })),
-      ]),
-      transition(':leave', [
-        animate('200ms ease-in', style({ left: '-18vw' })),
-      ]),
-    ]),
     trigger('dropdownAnimation', [
       state(
         'void',

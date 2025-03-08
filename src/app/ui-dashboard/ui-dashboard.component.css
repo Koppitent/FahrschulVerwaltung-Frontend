@@ -1,14 +1,15 @@
 .sidenav {
-  height: 100%;
-  position: fixed;
-  z-index: 1;
-  left: 0;
   background-color: #0f0f0f;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 30px;
-  width: 18vw;
+  width: 0vw;
   height: 100vh;
+	transition: width 0.5s;
+}
+
+.sidenav.open {
+	width: 18vw;
 }
 
 .sidenav button {
@@ -47,12 +48,4 @@
 
 .sidenav a:hover {
   color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
 }
