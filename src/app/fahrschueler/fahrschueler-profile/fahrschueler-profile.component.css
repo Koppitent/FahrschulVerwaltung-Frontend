@@ -13,6 +13,14 @@
   z-index: 1000;
 }
 
+.right-side {
+	height: 100vh;
+}
+
+.content-bar {
+	margin-top: 25vh;
+}
+
 .modal-header {
     display: flex;
     align-items: center;
@@ -67,10 +75,6 @@
 	box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-.content {
-	height: 30vh;
-}
-
 .tabs {
     display: flex;
     gap: 0.5vw;
@@ -94,11 +98,13 @@
 .praxis-content {
     display: flex;
     align-items: center;
+		justify-content: center;
     gap: 10px;
     overflow: hidden;
 }
 
 .praxis-list-wrapper {
+	display: flex;
   overflow-x: auto;
   white-space: nowrap;
 	scrollbar-width: thin;
@@ -108,7 +114,9 @@
 
 .praxis-list {
     display: flex;
-    gap: 10px;
+		flex-wrap: wrap;
+		overflow-y: auto;
+		height: 40vh;
 }
 
 .arrow {
@@ -116,6 +124,18 @@
     border: none;
     font-size: 24px;
     cursor: pointer;
+}
+
+.error-message-content {
+	padding: 0.2vw;
+	border: solid 1px red;
+	border-radius: 5px;
+	background-color: rgba(255, 0, 0, 0.1);
+	color: red;
+	width: fit-content;
+	height: fit-content;
+	justify-self: center;
+	user-select: none;
 }
 
 .right-side {
@@ -136,7 +156,8 @@
   border: none;
   cursor: pointer;
   border-radius: 3px;
-	margin-top: 3vh;
+	margin-bottom: 10vh;
+	margin-right: 5vw;
 	transition: background-color 0.15s ease-in-out;
 }
 

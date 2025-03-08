@@ -1,14 +1,14 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Fahrschueler } from '../../interfaces/fahrschueler.interface';
 import { PraxisstundenService } from '../../services/praxisstunden.service';
 import { Praxisstunde } from '../../interfaces/praxisstunde.interface';
 import { PraxisstundeCardComponent } from '../../praxisstunden/praxisstunde-card/praxisstunde-card.component';
-import { DatePipe, NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-fahrschueler-profile',
   standalone: true,
-  imports: [PraxisstundeCardComponent, NgIf, DatePipe, NgFor],
+  imports: [PraxisstundeCardComponent, NgIf, DatePipe],
   templateUrl: './fahrschueler-profile.component.html',
   styleUrl: './fahrschueler-profile.component.css',
 })
@@ -20,7 +20,8 @@ export class FahrschuelerProfileComponent implements OnInit, AfterViewInit {
   constructor(private praxisService: PraxisstundenService) {}
 
   selectedTab: 'praxis' | 'theorie' | 'profil' = 'praxis';
-  @ViewChild('praxisContainer', { static: false }) praxisContainer!: ElementRef<HTMLDivElement>;
+  @ViewChild('praxisContainer', { static: false })
+  praxisContainer!: ElementRef<HTMLDivElement>;
 
   scrollLeft() {
     if (this.praxisContainer) {
@@ -40,17 +41,21 @@ export class FahrschuelerProfileComponent implements OnInit, AfterViewInit {
     }
   }
 
-	ngAfterViewInit(): void {
-			if (this.praxisContainer) {
-				const container = this.praxisContainer.nativeElement;
-				container.addEventListener('wheel', (event: WheelEvent) => {
-          if (event.deltaY !== 0) {
-            event.preventDefault();
-            container.scrollLeft += event.deltaY * 0.9; // Adjust scrolling speed
-          }
-        });
-			}
-	}
+  initializePraxisScroll() {
+    if (this.praxisContainer) {
+      const container = this.praxisContainer.nativeElement;
+      container.addEventListener('wheel', (event: WheelEvent) => {
+        if (event.deltaY !== 0) {
+          event.preventDefault();
+          container.scrollLeft += event.deltaY * 0.9; // Adjust scrolling speed
+        }
+      });
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.initializePraxisScroll();
+  }
 
   ngOnInit(): void {
     this.praxisService

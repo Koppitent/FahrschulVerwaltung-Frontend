@@ -27,35 +27,33 @@
 									<path d="M15 18l-6-6 6-6"></path>
 								</svg>
 							</button>
-						}
             <div class="praxis-list-wrapper" #praxisContainer>
                 <div class="praxis-list">
                   @for (praxis of praxisstundenList; track $index) {
 										<app-praxisstunde-card [praxis]="praxis" />
-									} @empty {
-										<p class="error-message-content">Keine Praxisstunden vorhanden bisher</p>
 									}
                 </div>
             </div>
-						@if (praxisstundenList.length > 0) {
 							<button class="arrow right" (click)="scrollRight()">
 								<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 									<path d="M9 6l6 6-6 6"></path>
 								</svg>
 							</button>
+						} @else {
+							<p class="error-message-content">Keine Praxisstunden vorhanden bisher</p>
 						}
         </div>
         
         <div *ngIf="selectedTab === 'theorie'">
-            <p class="error-message-content">Theoriestunden werden hier angezeigt...</p>
+            <p class="error-message-content">Keine Theoriestunden gefunden.</p>
         </div>
         
         <div *ngIf="selectedTab === 'profil'">
-            <p class="error-message-content">Weitere Profilinformationen...</p>
+            <p class="error-message-content">Aktuell nicht verfügbar</p>
         </div>
     </div>
 		</div>
-    
-    <button class="close-btn" (click)="closeModal()">Schließen</button>
+  
 		</div>
+		<button class="close-btn" (click)="closeModal()">Schließen</button>
 </div>
