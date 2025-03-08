@@ -1,5 +1,5 @@
 .sidenav {
-  background-color: #0f0f0f;
+  background-color: #222;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 30px;
@@ -7,6 +7,7 @@
   height: 100vh;
 	position: fixed;
 	transition: width 0.5s;
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .sidenav.open {
@@ -27,14 +28,16 @@
   cursor: pointer;
   padding: 10px 15px 10px 0;
   background: #222;
-  color: #aaa;
+  color: #ccc;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   font-size: 1vw;
   border: #0f0f0f;
 	white-space: nowrap;
+	padding-left: 1vw;
+	border-bottom: #444 solid 1px;
 }
 
 .sidenav button:hover {
@@ -42,10 +45,20 @@
   color: #fff;
 }
 
+.sidenav button.active {
+  background: #444;
+  color: #fff;
+}
+
+.sidenav a.active {
+  background: #444;
+  color: #fff;
+}
+
 .sidenav a {
   padding: 10px 0 10px 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   text-decoration: none;
   font-size: 1vw;
@@ -53,6 +66,7 @@
   transition: 0.3s;
   background-color: #1e1c1c;
   cursor: pointer;
+	padding-left: 1vw;
 	white-space: nowrap;
 }
 

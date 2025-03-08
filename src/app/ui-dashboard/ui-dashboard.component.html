@@ -5,13 +5,13 @@
 
 	@for (button of dashboard.buttons; track $index) {
 		@if(button.routerLink) {
-			<button [routerLink]="button.routerLink">{{ button.label }}</button>
+			<button [routerLink]="button.routerLink" [ngClass]="{'active': button.label === activeItem}">{{ button.label }}</button>
 		} @else {
-			<button (click)="toggleExpand(button.label)">{{ button.label }}</button>
+			<button [ngClass]="{'active': button.label === activeItem}" (click)="toggleExpand(button.label)">{{ button.label }}</button>
 			@if (activeButton && activeButton === button.label) {
 				<div @dropdownAnimation>
 					@for (item of button.items; track $index) {
-						<a routerLink="{{ item.routerLink }}" draggable="false">{{ item.label }}</a>
+						<a routerLink="{{ item.routerLink }}" [ngClass]="{'active': item.label === activeItem}" draggable="false" (click)="toggleActiveItem(item.label)">{{ item.label }}</a>
 					}
 				</div>
 			}

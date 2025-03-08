@@ -43,13 +43,6 @@ import { Dashboard } from '../interfaces/dashboard.interface';
 export class UiDashboardComponent {
   @Input({ required: true }) isVisible = false;
 
-  private options: Map<string, boolean>;
-  constructor() {
-    this.options = new Map();
-    this.options.set('fahrschuler', false);
-    this.options.set('fahrlehrer', false);
-  }
-
   dashboard: Dashboard = {
     buttons: [
       {
@@ -85,39 +78,19 @@ export class UiDashboardComponent {
     ],
   };
 
+	activeItem: string | null = null;
   activeButton: string | null = null;
   toggleExpand(label: string) {
     this.activeButton = this.activeButton === label ? null : label;
+		this.activeItem = this.activeButton;
   }
-
-  setOptionActive(option: string): void {
-    if (this.options.has(option)) {
-      const isCurrentlyActive = this.options.get(option);
-      if (isCurrentlyActive) {
-        this.options.set(option, false);
-      } else {
-        this.options.forEach((_, key) => {
-          this.options.set(key, key === option);
-        });
-      }
-    } else {
-      console.warn(`Option "${option}" does not exist.`);
-    }
-  }
+	
+	toggleActiveItem(label: string) {
+		this.activeItem = label;
+	}
 
   close() {
     this.isVisible = false;
   }
 
-  getOption(key: string): boolean {
-    return this.options.get(key) || false;
-  }
-
-  toggleExpandFahrschueler() {
-    this.setOptionActive('fahrschuler');
-  }
-
-  toggleExpandFahrlehrer() {
-    this.setOptionActive('fahrlehrer');
-  }
 }
