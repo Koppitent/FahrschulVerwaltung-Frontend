@@ -11,6 +11,8 @@
         </div>
     </div>
     
+		<div class="right-side">
+		<div class="content-bar">
     <div class="tabs">
         <button (click)="selectedTab = 'praxis'" [class.active]="selectedTab === 'praxis'">Praxisstunden</button>
         <button (click)="selectedTab = 'theorie'" [class.active]="selectedTab === 'theorie'">Theoriestunden</button>
@@ -19,7 +21,13 @@
     
     <div class="content">
         <div *ngIf="selectedTab === 'praxis'" class="praxis-content">
-            <button class="arrow left" (click)="scrollLeft()">&#9664;</button>
+						@if (praxisstundenList.length > 0) {
+							<button class="arrow left" (click)="scrollLeft()">
+								<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M15 18l-6-6 6-6"></path>
+								</svg>
+							</button>
+						}
             <div class="praxis-list-wrapper" #praxisContainer>
                 <div class="praxis-list">
                   @for (praxis of praxisstundenList; track $index) {
@@ -29,7 +37,13 @@
 									}
                 </div>
             </div>
-            <button class="arrow right" (click)="scrollRight()">&#9654;</button>
+						@if (praxisstundenList.length > 0) {
+							<button class="arrow right" (click)="scrollRight()">
+								<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M9 6l6 6-6 6"></path>
+								</svg>
+							</button>
+						}
         </div>
         
         <div *ngIf="selectedTab === 'theorie'">
@@ -40,6 +54,8 @@
             <p class="error-message-content">Weitere Profilinformationen...</p>
         </div>
     </div>
+		</div>
     
     <button class="close-btn" (click)="closeModal()">Schließen</button>
+		</div>
 </div>

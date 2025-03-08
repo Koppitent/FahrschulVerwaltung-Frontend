@@ -12,7 +12,7 @@ import { DatePipe, NgFor, NgIf } from '@angular/common';
   templateUrl: './fahrschueler-profile.component.html',
   styleUrl: './fahrschueler-profile.component.css',
 })
-export class FahrschuelerProfileComponent implements OnInit {
+export class FahrschuelerProfileComponent implements OnInit, AfterViewInit {
   @Input({ required: true }) fahrschueler?: Fahrschueler;
   @Output() modalCloseClicked = new EventEmitter<void>();
 
@@ -39,6 +39,18 @@ export class FahrschuelerProfileComponent implements OnInit {
       });
     }
   }
+
+	ngAfterViewInit(): void {
+			if (this.praxisContainer) {
+				const container = this.praxisContainer.nativeElement;
+				container.addEventListener('wheel', (event: WheelEvent) => {
+          if (event.deltaY !== 0) {
+            event.preventDefault();
+            container.scrollLeft += event.deltaY * 0.9; // Adjust scrolling speed
+          }
+        });
+			}
+	}
 
   ngOnInit(): void {
     this.praxisService
