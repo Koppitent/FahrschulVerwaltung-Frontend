@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Praxisstunde } from '../../interfaces/praxisstunde.interface';
 import { DatePipe } from '@angular/common';
 import { FahrlehrerService } from '../../services/fahrlehrer.service';
 import { FahrschuelerService } from '../../services/fahrschueler.service';
 import { Fahrschueler } from '../../interfaces/fahrschueler.interface';
 import { Fahrlehrer } from '../../interfaces/fahrlehrer.interface';
+import { Praxisstunde } from '../../interfaces/praxisstunde.class';
 
 @Component({
   selector: 'app-praxisstunde-card',

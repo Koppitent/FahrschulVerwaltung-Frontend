@@ -58,3 +58,7 @@ ul li:hover {
 .dsh:hover {
   background-color: #717171;
 }
+
+.dsh-symbol {
+	user-select: none;
+}

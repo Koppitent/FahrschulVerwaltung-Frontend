@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { Fahrschueler } from '../../interfaces/fahrschueler.interface';
 import { PraxisstundenService } from '../../services/praxisstunden.service';
-import { Praxisstunde } from '../../interfaces/praxisstunde.interface';
 import { PraxisstundeCardComponent } from '../../praxisstunden/praxisstunde-card/praxisstunde-card.component';
 import { DatePipe, NgIf } from '@angular/common';
+import { Praxisstunde } from '../../interfaces/praxisstunde.class';
 
 @Component({
   selector: 'app-fahrschueler-profile',

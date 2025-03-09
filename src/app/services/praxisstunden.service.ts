@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Praxisstunde } from '../interfaces/praxisstunde.interface';
 import { Fahrschueler } from '../interfaces/fahrschueler.interface';
+import { Praxisstunde } from '../interfaces/praxisstunde.class';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +18,10 @@ export class PraxisstundenService {
 
 	getPraxisstundenFahrschueler(fahrschuelerId: number): Observable<Praxisstunde[]> {
 		return this.http.get<Praxisstunde[]>(this.apiUrl + '/fahrschueler/'+fahrschuelerId);
+	}
+
+	postPraxisstunde(praxisstunde: Praxisstunde): Observable<Praxisstunde> {
+		return this.http.post<Praxisstunde>(this.apiUrl, praxisstunde);
 	}
 
 }

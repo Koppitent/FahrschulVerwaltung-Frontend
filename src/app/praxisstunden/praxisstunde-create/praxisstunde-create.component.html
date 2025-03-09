@@ -1,3 +1,65 @@
 <div class="content">
-	<p>Hello there!</p>
+  <form (ngSubmit)="onSubmit()" #praxisstundeForm="ngForm">
+  <div class="select-boxen">
+		<div class="form-group fahrschueler">
+  <label for="fahrschueler">Fahrschüler</label>
+  <ng-select id="fahrschueler"
+             class="custom-fahrschueler"
+             [items]="fahrschuelerList"
+             bindLabel="fullName"
+             bindValue="id"
+             [(ngModel)]="praxisstunde.fahrschuelerId"
+             name="fahrschueler"
+             required>
+  </ng-select>
+</div>
+
+	<div class="form-group fahrlehrer">
+		<label for="fahrlehrer">Fahrlehrer</label>
+		<ng-select id="fahrlehrer"
+							class="custom-fahrlehrer"
+							[items]="fahrlehrerList"
+							bindLabel="fullName"
+							bindValue="id"
+							[(ngModel)]="praxisstunde.fahrlehrerId"
+							name="fahrlehrer"
+							required>
+		</ng-select>
+	</div>
+	</div>
+
+    <div class="form-group fahrstundentyp">
+      <label for="fahrstunde">Type of Fahrstunde</label>
+      <select class="fahrstundentyp-select" id="fahrstunde" [(ngModel)]="praxisstunde.typ" name="fahrstunde" required>
+        <option value="Fahrstunde">Fahrstunde</option>
+        <option value="Sonderfahrt">Sonderfahrt</option>
+      </select>
+    </div>
+
+		<div class="form-group uhrzeit">
+      <label for="uhrzeit">Uhrzeit</label>
+      <input class="uhrzeit-input" type="time" id="uhrzeit" [(ngModel)]="uhrzeit" name="uhrzeit" required>
+    </div>
+
+    <div class="form-group already-paid">
+			<label class="switch-label">Already Paid</label>
+			<label class="switch">
+				<input type="checkbox" id="paid" [(ngModel)]="praxisstunde.paid" name="paid">
+				<span class="slider"></span>
+			</label>
+		</div>
+
+
+    <div class="form-group commentsec">
+      <label for="comment">Comment</label>
+      <textarea id="comment" [(ngModel)]="praxisstunde.comments" name="comment"></textarea>
+    </div>
+
+    <div class="form-group datumsec">
+      <label for="datum">Datum (optional)</label>
+      <input class="datumsec-input" type="date" id="datum" [(ngModel)]="datum" name="datum">
+    </div>
+
+    <button type="submit" class="submit-button" [disabled]="!praxisstundeForm.form.valid">Create Praxisstunde</button>
+  </form>
 </div>
